@@ -30,7 +30,7 @@ export const games = [
       '/games/Backrooms/backrooms3.jpg',
     ],
     influencers: [
-      { name: 'Nombre del creador', platform: 'YouTube', url: 'https://www.youtube.com/' },
+      { name: 'VEGETTA777', platform: 'YouTube', url: 'https://www.youtube.com/watch?v=JKOKyhxse7w' },
     ],
   },
   {
@@ -211,7 +211,7 @@ export const games = [
       '/games/aventura/windwaker/windwaker3.png',
     ],
     influencers: [
-      { name: 'GENuINE993', platform: 'YouTube', url: 'https://www.youtube.com/watch?v=HH3Epy9gLy4' },
+      { name: 'Juja', platform: 'YouTube', url: 'https://www.youtube.com/watch?v=PIXL4-jPbIs' },
     ],
   },
   {
@@ -242,7 +242,7 @@ export const games = [
       '/games/aventura/botw/botw3.png',
     ],
     influencers: [
-      { name: 'Nombre del creador', platform: 'YouTube', url: 'https://www.youtube.com/' },
+      { name: 'IlloJuan', platform: 'YouTube', url: 'https://www.youtube.com/watch?v=3jHK-t9WS_Y' },
     ],
   },
   {
@@ -273,7 +273,7 @@ export const games = [
       '/games/aventura/oot/oot3.png',
     ],
     influencers: [
-      { name: 'Nombre del creador', platform: 'YouTube', url: 'https://www.youtube.com/' },
+      { name: 'Nombre del creador', platform: 'YouTube', url: 'https://www.youtube.com/watch?v=6xh8fw_XUuE' },
     ],
   },
 
@@ -306,7 +306,7 @@ export const games = [
       '/games/jrpg/p3r/p3r3.png',
     ],
     influencers: [
-      { name: 'Nombre del creador', platform: 'YouTube', url: 'https://www.youtube.com/' },
+      { name: 'Juja', platform: 'YouTube', url: 'https://www.youtube.com/' },
     ],
   },
   {
@@ -337,7 +337,7 @@ export const games = [
       '/games/jrpg/p4g/p4g3.png',
     ],
     influencers: [
-      { name: 'Nombre del creador', platform: 'YouTube', url: 'https://www.youtube.com/' },
+      { name: 'Spartan115jef', platform: 'YouTube', url: 'https://www.youtube.com/watch?v=izULSjSubuE' },
     ],
   },
   {
@@ -368,7 +368,7 @@ export const games = [
       '/games/jrpg/p5r/p5r3.png',
     ],
     influencers: [
-      { name: 'Nombre del creador', platform: 'YouTube', url: 'https://www.youtube.com/' },
+      { name: 'El Fedelobo', platform: 'YouTube', url: 'https://www.youtube.com/watch?v=FqtIv4n4UAI' },
     ],
   },
   {
