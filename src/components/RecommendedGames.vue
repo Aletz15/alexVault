@@ -5,8 +5,6 @@ defineProps<{
   games: any[]
   title?: string
 }>()
-
-const emit = defineEmits(['select-game'])
 </script>
 
 <template>
@@ -14,11 +12,11 @@ const emit = defineEmits(['select-game'])
     <h2 class="recommended__title">{{ title ?? 'Recomendado para ti' }}</h2>
 
     <div class="recommended__row">
-      <button
+      <RouterLink
         v-for="game in games"
         :key="game.id"
+        :to="{ name: 'juego', params: { gameId: game.id } }"
         class="recommended__item"
-        @click="emit('select-game', game.id)"
       >
       <!-- Div para que se vea la minitarjeta  -->
         <div class="recommended__thumb-wrap">
@@ -37,7 +35,7 @@ const emit = defineEmits(['select-game'])
             </div>
           </div>
         </div>
-      </button>
+      </RouterLink>
     </div>
   </section>
 </template>
@@ -68,6 +66,7 @@ const emit = defineEmits(['select-game'])
 
 .recommended__item {
   position: relative;
+  display: block;
   flex: 0 0 180px;
   height: 100px;
   padding: 0;
@@ -75,6 +74,8 @@ const emit = defineEmits(['select-game'])
   border-radius: 4px;
   cursor: pointer;
   background: none;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Div para que se vea el contenedor de la minitarjeta*/

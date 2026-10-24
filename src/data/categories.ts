@@ -21,7 +21,7 @@ export const categories: Category[] = [
   {
     id: 'terror',
     title: 'TERROR',
-    backgroundImage: 'https://store.akamai.steamstatic.com/categories/image/category/horror?cc=MX&l=latam',
+    backgroundImage: 'https://store.fastly.steamstatic.com/categories/image/category/survival?cc=MX&l=latam',
     heroBackgroundImage: '/games/categories/terrorhero.jpg',
     titleFont: "'Nosifer', system-ui",
   },

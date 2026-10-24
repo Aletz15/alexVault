@@ -375,6 +375,7 @@ export const games = [
     // No tiene score ni creador de contenido
     id: 'persona-4-revival',
     category: 'upcoming',
+    esProximo: true,
     title: 'Persona 4 Revival',
     tagline: 'Sintoniza el Canal de Medianoche y busca la verdad.',
     description:
@@ -404,6 +405,7 @@ export const games = [
     // No tiene score ni creador de contenido
     id: 'ocarina-of-time-remake',
     category: 'upcoming',
+    esProximo: true,
     title: 'The Legend of Zelda: Ocarina of Time Remake',
     tagline: 'El clásico atemporal, reconstruido desde cero.',
     description:

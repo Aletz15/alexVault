@@ -9,9 +9,6 @@ const props = defineProps<{
   titleFont: string
 }>()
 
-// avisa a App.vue que juego se selecciono para abrir el detalle con @select-game
-const emit = defineEmits(['select-game'])
-
 // en que posicion del arreglo va y guardar posicion y objeto
 const currentIndex = ref(0)
 const currentGame = ref(props.games[0])
@@ -44,10 +41,6 @@ function siguienteJuego() {
 
 function juegoAnterior() {
   irAlJuego(currentIndex.value - 1)
-}
-
-function abrirDetalle() {
-  emit('select-game', currentGame.value.id)
 }
 
 // --- control del video ---
@@ -139,7 +132,10 @@ onBeforeUnmount(() => {
         </div>
 
         <!-- Panel derecho abre tarjeta clickeable que abre el GameDetails del cada juego-->
-        <div class="carousel__card" @click="abrirDetalle">
+        <RouterLink
+          :to="{ name: 'juego', params: { gameId: currentGame.id } }"
+          class="carousel__card"
+        >
           <img class="carousel__card-image" :src="currentGame.cover" :alt="currentGame.title" />
 
           <div class="carousel__card-tags">
@@ -152,7 +148,7 @@ onBeforeUnmount(() => {
             <span>Fecha de lanzamiento: {{ currentGame.releaseDate }}</span>
             <span class="carousel__price">{{ currentGame.price }}</span>
           </div>
-        </div>
+        </RouterLink>
 
         <button class="carousel__arrow" @click="siguienteJuego">&#10095;</button>
       </div>
@@ -291,6 +287,8 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .carousel__card-image {

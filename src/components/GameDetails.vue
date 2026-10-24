@@ -3,12 +3,18 @@
 // características e influencers
 import { ref } from 'vue'
 import { getGameById } from '../data/games'
+import { useCarrito } from '../composables/usecarrito'
 
+// gameId llega desde la ruta /juego/:gameId (en el router tiene props: true)
 const props = defineProps(['gameId'])
-const emit = defineEmits(['back'])
+
+const { agregarAlCarrito: agregar } = useCarrito()
 
 // busca el juego usando el id que le llego
 const game = getGameById(props.gameId)
+
+//juegos proximos a salir no se puede comprar solo preventa/dato vienede games
+const esProximo = game?.esProximo
 
 //la lista de miniaturas primero el video y luego las fotos
 const mediaList: { type: string; src: string }[] = []
@@ -27,14 +33,16 @@ function verMedia(indice: number) {
   activeIndex.value = indice
 }
 
-function volver() {
-  emit('back')
+//agrega el juego al carrito (si no hay sesion, avisa que debe iniciar)
+function agregarAlCarrito(){
+  agregar(props.gameId)
 }
+
 </script>
 
 <template>
   <section v-if="game" class="detail">
-    <button class="detail__back" @click="volver">&#8592; Volver al catálogo</button>
+    <RouterLink to="/" class="detail__back">&#8592; Volver al catálogo</RouterLink>
 
     <p class="detail__breadcrumb">Todos los juegos &gt; Terror &gt; {{ game.title }}</p>
     <h1 class="detail__title">{{ game.title }}</h1>
@@ -49,7 +57,7 @@ function volver() {
             :src="mediaList[activeIndex].src"
             controls
             autoplay
-            muted
+            unmuted
             loop
           ></video>
           <img
@@ -74,7 +82,7 @@ function volver() {
         </div>
       </div>
 
-      <!-- ficha del juego -->
+      <!-- tarjeta del juego -->
       <aside class="detail__sidebar">
         <img class="detail__cover" :src="game.cover" :alt="game.title" />
 
@@ -95,6 +103,11 @@ function volver() {
         </div>
 
         <div class="detail__price">{{ game.price }}</div>
+
+        <!-- carrito preventa -->
+        <button class="detail__buy" @click="agregarAlCarrito">
+          {{ esProximo ? 'Reservar en preventa' : 'Añadir al carrito'}}
+        </button>
       </aside>
     </div>
 
@@ -146,6 +159,8 @@ function volver() {
 }
 
 .detail__back {
+  display: inline-block;
+  text-decoration: none;
   background: none;
   border: none;
   color: #66c0f4;
@@ -301,6 +316,25 @@ function volver() {
   font-weight: bold;
   color: #a4d007;
 }
+
+.detail__buy {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background: #5c7e10;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.detail__buy:hover {
+  background: #76a314;
+}
+
 
 .detail__section {
   margin-top: 32px;

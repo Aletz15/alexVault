@@ -1,18 +1,10 @@
 <script setup lang="ts">
-export interface UpcomingItem {
-  gameId: string
-  image: string
-  badge?: string
-  footerTitle: string
-  footerSubtitle: string
-}
+import type { UpcomingItem } from '../interfaces/upcoming.interface.ts'
 
 defineProps<{
   items: UpcomingItem[]
   title?: string
 }>()
-
-const emit = defineEmits(['select-game'])
 </script>
 
 <template>
@@ -20,11 +12,11 @@ const emit = defineEmits(['select-game'])
     <h2 class="upcoming__title">{{ title ?? 'Proximos lanzamientos' }}</h2>
 
     <div class="upcoming__grid">
-      <button
+      <RouterLink
         v-for="item in items"
         :key="item.gameId"
+        :to="{ name: 'juego', params: { gameId: item.gameId } }"
         class="upcoming__card"
-        @click="emit('select-game', item.gameId)"
       >
         <div class="upcoming__image-wrap">
           <img class="upcoming__image" :src="item.image" :alt="item.footerTitle" />
@@ -39,7 +31,7 @@ const emit = defineEmits(['select-game'])
           <span class="upcoming__footer-title">{{ item.footerTitle }}</span>
           <span class="upcoming__footer-subtitle">{{ item.footerSubtitle }}</span>
         </div>
-      </button>
+      </RouterLink>
     </div>
   </section>
 </template>
@@ -79,6 +71,8 @@ const emit = defineEmits(['select-game'])
   cursor: pointer;
   padding: 0;
   text-align: left;
+  text-decoration: none;
+  color: inherit;
   font-family: Arial, sans-serif;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
